@@ -34,4 +34,62 @@ Two instantiations are provided:
 - **Seesaw-v1** — fixed-formula version, query-projection only, evaluated on BERT-base
 - **Seesaw-v2** — generalized version with z-score normalization, Q/K/V/O projections, evaluated on DeBERTa-v1/v3
 
-## Repository structure
+
+## Scope of released code
+
+- **Table 3** (DeBERTa-v3-base vs. established PEFT baselines): SST-2, CoLA,
+  STS-B, and MRPC — **complete**, each with its own script in `experiments/`.
+- **Importance Normalization Ablation** (Appendix A.1, A.4): raw, mean-divided,
+  and z-score scoring, at two controller checkpoint frequencies — **complete**,
+  see `ablations/normalization/`.
+- **Table 1** (BERT-base, 6 GLUE tasks): reference implementation for
+  AG News (`experiments/table1_ag_news_bert_base.py`). The remaining
+  five tasks use the identical Seesaw-v1 training loop with the
+  corresponding GLUE subset substituted.
+- **Table 2** (DeBERTa-v1 efficiency profiling): the Seesaw row is
+  included; baselines (Full FT, LoRA, LoRA-FA, (IA)³) use standard
+  reference implementations at matched configuration.
+- The Fixed Static, Inverted Dynamic (Section 6), and Optimizer-Reset
+  Policy ablations are direct modifications of the training loop in
+  `experiments and are not included as
+  separate scripts in this release.
+
+## Installation
+
+```bash
+git clone https://github.com/<username>/seesaw-lora.git
+cd seesaw-lora
+pip install -r requirements.txt
+```
+
+## Usage
+
+```bash
+python experiments/table3_cola_deberta_v3.py
+```
+
+Hyperparameters are defined at the top of each script and differ
+across tasks/backbones — see Appendix B (Per-Task Hyperparameters) in
+the paper for the full breakdown.
+
+## Citation
+
+```bibtex
+@inproceedings{anonymous2027seesaw,
+  title     = {Seesaw: Budget-Preserving Rank Reallocation for Low-Rank Adaptation},
+  author    = {Anonymous},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2027},
+  note      = {Under review}
+}
+```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+## Acknowledgments
+
+This repository is submitted as part of an anonymous double-blind
+review process for ICLR 2027. Author names and identifying details
+will be added upon acceptance.
