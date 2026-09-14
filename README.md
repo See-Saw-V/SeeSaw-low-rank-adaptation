@@ -1,6 +1,8 @@
-<p align="center">
-  <img src="figures/logo_final.png" alt="Seesaw logo" width="480"/>
-</p>
+<div align="center">
+
+  <h1>⚖️ Seesaw</h1>
+
+  <em>Official code release for <strong>"Seesaw: Budget-Preserving Rank Reallocation for Low-Rank Adaptation"</strong> (under review at ICLR 2027)</em>
 
 <p align="center">
   <em>Official code release for <strong>"Seesaw: Budget-Preserving Rank Reallocation for Low-Rank Adaptation"</strong> (under review at ICLR 2027)</em>
